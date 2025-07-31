@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import IntegerField, SubmitField, DateField
+from wtforms import StringField, IntegerField, SubmitField, DateField
 from wtforms.validators import InputRequired, NumberRange, DataRequired
 
 class HealthDataForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
     date = DateField('Date', format='%Y-%m-%d', validators=[DataRequired()])
     exercise = IntegerField('Exercise (minutes)', validators=[InputRequired(), NumberRange(min=0)])
     meditation = IntegerField('Meditation (minutes)', validators=[InputRequired(), NumberRange(min=0)])
